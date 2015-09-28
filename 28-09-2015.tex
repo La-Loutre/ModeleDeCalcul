@@ -1,0 +1,111 @@
+\documentclass[base.tex]{subfiles}
+\begin{document}
+\[decidable\Rightarrow semi-decidable\]
+A peu près tous les ensembles que l'on peut nommer sont décidables.
+
+\textbf{Exemples d'ensembles décidables :}
+\begin{itemize}
+\item Nombres pairs
+\item Nombres premiers
+  \item Les mots en alphabet ASCII qui représentent des programmes C.
+\end{itemize}
+
+\textbf{Exemple d'ensemble semi-décidable qui n'est pas décidable :}\\
+L'ensemble des paires $(p,x) , p \in \mathbb{P} , x \in \mathbb{N}$ , telles que $p$ s'arrête sur $x$ ($p$ appliquer à $x$ s'arrête ).\\
+\\
+\textbf{Pas décidable :}\\
+L'indécidabilité du problème de l'arrêt .
+\\
+Pourquoi cet ensemble est-il semi-décidable ? \\
+On a une instance $(p,x)$ , on veut savoir si $p$ s'arrête sr $x$ , et si c'est le cas , répondre oui.\\
+Comment agir ? Lancer $p$ sur $x$ et attendre . Quand ( et si ) $p$ s'arrête , on répond oui .
+
+
+\subsubsection{Union/intersection/complémentaire}
+\begin{itemize}
+\item \textbf{L'union} de deux ensembles décidable est décidable \\
+  \emph{Preuve :} soient deux ensemble A et B . Répondre "oui" si au moins un des deux algorithmes répond "oui" , et répondre "non" si tous les deux ont répondu "non".
+\item \textbf{L'union} de deux ensemble semi-décidables est semi-décidable.\\
+  \emph{Preuve :} la précédente, terminée avant la partie "et répondre non"\\
+  \emph{Subtilité :}Il faut lancer deux programmes en parallèle pour que le deuxième n'attende pas la réponse du premier.
+\item \textbf{L'intersection} des deux ensembles (semi-)décidables est (semi-)décidable. (vrai pour décidable et semi-décidable).\\
+  Il faut avoir 2 réponses positives.
+\item \textbf{Le complément} d'un ensemble décidable est décidable.\\
+  \emph{Preuve :} Interchanger "oui" et "non"
+\item Pour les ensembles semi-décidables en général ce n'est pas vrai.
+\end{itemize}
+\medskip
+\textbf{Proposition} : Si un ensemble et son compléments sont tout les deux semi-décidables alors ils sont tous les deux décidables.\\
+\emph{Preuve} : Supposons que $\mathbb{A}$ et $\bar{\mathbb{A}}$ soient semi-décidables . Il existe donc un algorithme qui répond positivement si $x \in \mathbb{A}$ ,et un autre qui répond positivement si $x\in \bar{\mathbb{A}}$ (c'est a dire si $x \not\in \mathbb{A}$). Il faut les lancer tous les deux en aprallèle , et si c'est le premier ($\mathbb{A}$) qui à répondu "oui" on répond "oui" , et si c'est le deuxième ($\bar{\mathbb{A}}$) on répond "non".
+\subsubsection{Algorithmes énumératifs }% subsubsection ou subsectio ???? feuille1
+Un tel algorithme
+\begin{itemize}
+\item Ne prend rien en entrée
+\item ne s'arrête jamais
+\item Il sort de temps à autre des éléments d'un ensemble ( des entiers ou des objets d'autre nature).
+\end{itemize}
+\medskip
+Un tel algorithme génére , ou énumère un ensemble .
+\\
+\\
+\textbf{Exemple :} 
+\begin{verbatim}
+n=0
+tantque n >= 0 faire:
+   m=n^2
+   sortir m
+   n = n+1
+fintantque
+\end{verbatim}
+\medskip
+\textbf{Proposition :}
+\begin{itemize}
+\item L'ensemble des résultats d'un algorithme énumératif est semi-décidable.
+\item Tout ensemble semi-décidable peut être crée par un algorithme énumératif
+\end{itemize}
+\medskip
+La première proposition est vue en TD , pour la deuxième :\\
+Soit un ensemble $\mathbb{A}$ semi-décidable , et soit un algorithme $P$ qui répond par "oui" si $x \in \mathbb{A}$ .\\
+Notre objectif : énumérer (c'est à dire sortir au fur et à mesure ) tout les éléments de $\mathbb{A}$. Comment faire ? Il faut lancer l'algorithme $P$ sur toutes les instance $x$ en parallèle.\\ %voir feuille 1 notes
+Dès qu'il y a une réponse positive pour un certain $x$ , il faut le sortir en tant que résultat de l'algorithme énumératif .
+\medskip
+\textbf{Tout ensemble fini est décidable}
+\medskip
+\textbf{Remarque :} Nous avons parlé des intersections et des unions de deux ensembles décidables et semi-décidables. Les même propriétés restent vrais pour \textit{des familles finies d'ensemble}.
+\\
+\\
+C'est pas forcément vrai pour les unions et intersections en quantité infinies.N'importe quel sous ensemble de $\mathbb{N}$ peut être obtenu comme union des singleton (ensemble ne comportant qu'un seul points ) .
+
+\section{Complexité de Kolmogorov}
+Il s'agit de complexité de description\\
+Oublier temporairement le problème d'efficacité des algorithmes . On travail dans l'univers des mots binaires $\{0,1\}^*$ que l'on identifie avec des entiers positifs 1,2,3,..., de la manière suivante :
+TODO
+%schéma a mettre ( schéma 1 feuille 2)
+\\
+\\
+\textbf{La taille de l'écriture }
+\begin{itemize}
+\item Si on se représente un mot binaire , c'est la longueur de ce mot .
+  \item Si on se représente le même objet comme un entier $m$ c'est $\lfloor \log _2 m \rfloor\simeq \log m$
+\end{itemize}
+\medskip
+Soit un algorithme $f=\{0,1\}^* \rightarrow \{0,1\}^*$ \\
+La complexité de mot $x \in \{0,1\}^*$ selon $f$ est : %voir feuille 2
+Si f(t) = x
+\[K_f(x)=min|t|\]
+et si il tel $t$t n'existe pas 
+\[K_f(x)=\infty\]
+On dit que $t$ est une description de $x$ selon $f$ , et l'algorithme $f$ construit $x$ à partir de cette description.\\
+\\
+Un gros défaut : la complexité n'est pas "objective": elle dépend d'un algorithme $f$ choisit.\\
+\\
+\textbf{Théorème (Kolmogorov ,1965)}\\
+Il existe un algorithme $f_0$ , dit optimal , tel que , quel que soit un autre algorithme $f$ on a :
+\[K_{f_0}(x) \leq K_f(x) +C\]
+La constante $C$ dépend de $f$.
+\\
+Donc on choisit , une fois pour toutes , un algorithme optimal $f_0$, et on définit
+\[K(x) =K_{f_0}(x)\]
+On peut avoir deux algorithmes optimaux $f_1$ et $f_2$ , mais alors
+\[|K_{f_1}(x)-K_{f_2}(x)| \leq C\]
+\end{document}
