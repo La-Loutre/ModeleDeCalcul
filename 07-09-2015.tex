@@ -1,0 +1,127 @@
+\documentclass[base.tex]{subfiles}
+\begin{document}
+\section{Calculabilité}
+Ce qui est calculable et ce qui ne l'est pas
+\\
+Comment travailler avec des ensembles infinis :
+\begin{itemize}
+\item Bijections
+\item Coordinalité
+\item Dénombrables et non dénombrables
+\item Diagonalisation
+\item Fonction calculable et non calculable
+\item Ensemble décidable et non décidables
+\end{itemize}
+
+\textbf{Machine de turing}
+Automate avec une mémoire externe non limitée
+
+\subsection{Exemple concrets de problèmes indécidables}
+\textbf{Complexité}
+\begin{itemize}
+\item Réduction polynomiale
+\item classe NP
+\item NP complétude
+\item Théorème de COOK-Lenon
+\end{itemize}
+Problème "p=NP?"
+\\
+\\
+Comment mesurer la taille des ensembles infinis ?\\
+Nombre (entier non négatif) : une abstraction.
+\\
+\\
+\textbf{Définition}\\
+On dit que 2 ensemble x et y sont de même cardinalité s'il existe une bijection
+\[f:X->Y\]
+\\
+\\
+\textbf{Bijection entre X et Y}:
+Une fonction $f: X -> Y$ telle que :
+\begin{itemize}
+\item Pour tout $x \in X$ il existe un et un seul $y \in Y$ tel que $y=f(x)$
+\item Pour tout $y \in Y$ il existe un et un seul $x \in X$ tel que $f(x) = y$
+\end{itemize}
+C'est à dire , il existe une fonction inverse \[x = f^{-1}(y)\]
+%Schéma a mettre ici
+\textbf{Définition}\\
+Un ensemble $X$ est dénombrable s'il existe une bijection entre $X$ et $\mathbb{N}$
+\\
+\\
+\textbf{Intuitivement} : Un ensemble est dénombrable s'il est infini et si on peut numéroter ses éléments par $0,1,2,...$
+\subsection{Exemple d'ensemble dénombrables (voir en TD)}
+\begin{itemize}
+\item Carrés ${0,1,4,9,16,25,...}$
+\item $\mathbb{Z} = \{0,-1,1,-2,2,...\}$
+\item $\mathbb{N}^{2}=\{(x,y)|x,y \in \mathbb{N}\}$
+\item Nombres rationnels = $\mathbb{Q}$ (fractions)
+\item $\mathbb{A}^*$ ou $\mathbb{A}$ est un alphabet fini
+\item Ensemble des graphes finis
+\item Programme C
+\end{itemize}
+Soit l'ensemble $\mathbb{F}$ des fonctions $f\mathbb{N}$ .
+$\mathbb{F} = \{f|f$ une fontion de $\mathbb{N}$ vers $\mathbb{N}$
+\\
+\textbf{Proposition}
+\\
+L'ensemble $\mathbb{F}$ n'est pas dénombrable .Méthode de preuve : \underline{diagonalisation}
+\\
+Mettre en bijection avec $\mathbb{N} \Leftrightarrow $  numéroté.\\
+Supposons que l'ensemble de toutes les fonctions puisse être numéroté.
+\[f0,f1,f2,f3,...\]
+et cette liste contient toutes les fonctions $f:\mathbb{N}\rightarrow\mathbb{N}$
+$\begin{array}{l|cr}xf & 0 & 1\\ \hline f0 & 0 & 0\\ f1 & 3 & 2\\\end{array}$
+  \\
+  On suppose que dans les lignes de cette table se trouvent toute les fonctions , et on va fabriquer une autre fonction, qui n'est pas dans la table.
+  %tableau
+\\
+Cette fonction ne coincide pas avec f0 , ni avec f1 , ni avec f2 , etc .
+Elle ne figure pas dans notre table !
+\\
+\\
+\textbf{Reformulation}\\
+L'ensemble des suites binaires infinis n'est pas dénombrable.\\
+L'ensemble $P(\mathbb{N})$ des parties de $\mathbb{N}$ n'est pas dénombrable.\\
+L'ensemble des points du segment [0,1] n'est pas dénombrable. Par conséquent $\mathbb{R}$ aussi .(point $t\in [0,1] \rightarrow$ son développement binaire : $t=0,101001...$
+\\
+\\
+\subsection{Preuve par diagonalisation}
+\textbf{George Cantor} (1874,publié 1891)
+\\
+Les années 1930:
+\begin{itemize}
+\item L'ensemble des algorithmes ( des programmes ) est dénombrable.
+\item L'ensemble des fonctions $f:\mathbb{N}\rightarrow\mathbb{N}$ n'est pas dénombrable.
+\item L'ensemble des fonctions est plus grand que l'ensemble des algorithmes , (il y a des fonctions pour lesquelles il n'y a pas d'algorithme pour les calculer.
+\end{itemize}
+Le premier objectif du cours : \\
+Etudier le phénomène de non-calculabilité.\\
+\\
+\underline{Un exemple :} David Hilbert(1901):\\
+23 problèmes pour le 20ème siècle .
+\\
+\\
+\subsubsection{Le problème numéro 10}
+Trouver un algorithme pour le problème suivant:\\
+\underline{Instance :} Une équation $P(x1,...,xn) = 0$ où $P$ est un polynôme à coefficients entiers. \\
+\underline{Question :} Existe ti'l des solutions en nombre entiers ?\\
+\underline{Exemple :}
+\begin{itemize}
+\item $x^2 - 2y^2 = 1$ une instance de solution.
+\item $x^n+y^n=z^n$ Pour $n=2$ : infinité de solution ,$n\geq3$ pas de solution.
+  \item $y^2 = x(x-1)(x-a)$ Il existe un algorithme (la réponse dépend de a)
+\end{itemize}
+1971 Yuri Matigasench
+Un tel algorithme n'existe pas !
+
+\subsubsection{Théoreme de Cantor-Bernstein}
+Soit deux ensemble $\mathbb{A}$ et $\mathbb{B}$ .
+Si il existe une bijection $f$ entre $\mathbb{A}$ et un sous-ensemble $\mathbb{B}_1\subseteq\mathbb{B}$ , et aussi une bijection $g$ entre $\mathbb{B}$ et un sous ensemble $\mathbb{A}_1\subseteq\mathbb{A}$ alors il existe une bijection entre $\mathbb{A}$ et $\mathbb{B}$ .
+\[f:\mathbb{A}\rightarrow\mathbb{B}\]
+\[f(\mathbb{A})=\mathbb{B}_1\subseteq\mathbb{B}\]
+\[g:\mathbb{B}\rightarrow\mathbb{A}\]
+\[g(\mathbb{B})=\mathbb{A}_1\subseteq\mathbb{A}\]
+%schéma feuille 2
+
+
+\end{document}
