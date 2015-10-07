@@ -1,0 +1,63 @@
+\documentclass[base.tex]{subfiles}
+\begin{document}
+\textbf{Complexité de description} : Objets avec lesquels on travail sont des mots binaires identifiés avec des entiers positifs. Si on considère un objet en tant que mot , sa taille est $|n|$, soit la longueur du mot (si on le considère comme un entier sa taille est $\log_u$ .\\
+\\
+Soit f une fonction calculable .\\
+\textbf{Définition : } La complexité de x selon f est
+\[K_f(x) = min|t| : f(t) = x\]
+ou si un tel t n'existe pas 
+\[K_f(x) = \infty\]
+
+$t$ est une description de $x$ (selon $f$) , et $f$ est un "décodage" , une récupération de $x$ à partir de sa description. \\
+Comment faire en sorte qu'une complexité ne dépende pas du choix d'une fonction $f$ ?\\
+\\
+
+\textbf{Théoreme  Kolmogorov ,1965}
+Il existe une fonction $f_0$ dite optimale , telle que quel que soit une autre fonction $f$ ,vérifie l'inégalité :
+\[K_{f_0}(x) \le K_{f(x)} + C\]
+Ou la constance $C$ dépend de $f$ .\\
+\\
+Les descriptions selon $f_0$ sont les plus courtes ( à une constante près ).
+\\
+\\
+\textbf{Preuve : } Soit $p$ un programme qui calcule la fonction $f$ , et soit $t$ une description de $x$ selon $f$ . Alors on prend comme une des descriptions de $x$ selon $f_0$ la paire $(p,t)$ . $f_0$ est donc une variante de la fonction universelle $U(p,t)$\\
+\textit{Détails technique} : Une description est un mot et $(p,t)$ est une paire de mots . Il faut donc coder la paire de mot par des mots .\\
+En se faisant , il n'est pas important de coder $p$ de manière courte car c'est seulement la constante $C$ qui dépend de la taille de $p$ .\\
+Par contre en codant $t$ il faut être très économe sur le codage de $t$ , car ça porte sur tout les mots $t$ .\\
+\\
+Ce que fait Kolmogorov lui-même : En écrivant le mot on répète chaque chiffre deux fois :
+%schéma 1 feuille 1
+\\
+La taille de la paire $(p,t)$ devient égale .
+\[2|p| + 2 + |t|\]
+Avec $2|p| + 2 = C$ (constante qui dépend de $p$)
+\\
+\\
+Supposons maintenant que $f_1$ et $f_2$ deux fonctions optimales . Alors on a
+%blank ? ?
+%schéma 1 feuille 2
+\\
+\\
+A partir de maintenant on choisit une fonction optimale $f_0$ , on la fixe une fois pour toute , et on dénote :
+\[K(x) = K_{f_0}(x)\]
+$K(x)$ est la complexité de Kolmogorov .
+\\
+\\
+\textbf{Proposition : } Parmis les mots de longueur $n$ , la proportion de ceux dont la complexité $K(x) \l n-K$ est inférieur à $\frac{1}{2^K}$ .\\
+\\
+\textbf{Proposition :}
+\[K(x) \le |x| + C\]
+Soit $f(x) = x$ alors la complexité $K_{f(x)} = |x|$
+Pour les nombres :
+\[K(x) \le \log x + C\]
+Intuitivement la plupart des mots de longueur $n$ ont la complexité proche à $n$ , et seulement une petite minorité possède une plus faible complexité .
+\\
+\\
+\textbf{Démonstration : } Le nombre des descriptions éventuelles de taille $\l n-K$ est $1+2+4+...+2^{n-K-1} = 2^{n-K} - 1 \l 2^{n-K}$
+\[1=2-1\]
+\[1+2 = 3 = 4-1 \]
+La proportion est donc $ \l \frac{2^{n-K}}{2^n} = 2^{-K}$\\
+Il existe des mots non compressibles : $K(x) \geq |x|$ . C'est à dire pour décrire $x$ , on ne peut économiser même un seul bit.\\
+%Manque la deuxième heure..
+\end{document}
+
