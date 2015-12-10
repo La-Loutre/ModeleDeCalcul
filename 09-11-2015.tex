@@ -1,0 +1,54 @@
+\documentclass[base.tex]{subfiles}
+\begin{document}
+\section{Complexité}
+A partir d'aujourd'hui tous les problèmes traités en cours seront décidables. Donc un algo existe toujours .\\
+La question étudiée : Existe t'il un algo de complexité "raisonnable"  ?\\
+\\
+\textbf{La complexité en temps de calcul} (complexité habituelle).\\
+  Nous allons distinguer des algo polynomiaux et non polynomiaux .\\
+  \\
+  \textbf{Complexité polynomiale :} On dis qu'un algo est de complexité polynomiale s'il existe un polynome p(n) tel que le temps de calcul $t(n)\leq p(n)$ ou $n$ est la taille de l'instance .\\
+  Donc $O(n),O(n^2),O(n^3),...$ polynomiaux.\\
+  $n\log n <  n^2 \Rightarrow n \log n $ polynomial .\\
+  \\
+  \textbf{Non polynomial :} $2^n,n!,...| O(2^n)$ : exponentiel.\\
+  \\
+  La plus grande vitesse jamais obtenue par un ordinateur : $\approx 10$ petaflops = $10^{16}$ . Pendant le temps d'une opération la lumière parcours 0.00003 mm.\\
+  \\
+  \textbf{Bilan : }$10^{27}$ opérations en 3000 ans (3000 = $10^{11}$ sec).\\
+  Autour de $10^{30}$ : une limite absolue de ce que l'on pourrait faire par un (ou des ) ordinateurs . \\
+  \[10^3 = 1000 \approx 1024 = 2^{10}\]
+  \[10^{30} = (2^{10})^{10} = 2^{100}\]
+  Pour comparaison : $n = 100 \Rightarrow n^3$ , $10^{-6}$ sec .\\
+  \\
+  \textbf{Deux questions :}
+  \begin{itemize}
+  \item Comment mesurer la taille d'une instance ?
+    \item Comment mesurer le nombre d'opérations ?
+  \end{itemize}
+  \textbf{La taille d'une instance : } Considérons un exemple : graphe à n sommets.
+  \begin{itemize}
+  \item La taille = n .
+  \item Le nombre maximum des arêtes dans un graphe à n sommets est $\frac{n(n-1)}{2} = \frac{n^2-n}{2} = O(n^2)$
+    \item Pour écrire un entier n il faut $\log_2m$ bits . $n^2 * \log(n^2) = 2n^2\log n$ , $O(n^2\log n)$.
+  \end{itemize}
+  \textbf{Observation : } Si on ne s'intéresse qu'à la distinction entre polynomial et non alors toutes ces mesures sont polynomiales .
+  \subsection{Comment mesuré le temps de calcul ?}
+  \textbf{Réponse : }Le nombre d'opérations faites par une machine de Turing . Ce modèle est simple , la définition est rigoureuse . Mais aussi ce modèle est suffisant pour distinguer entre les complexités polynomiales ou non .\\
+  Nous avons vu un exemple : Deux bandes simuler par une bande $\Rightarrow t(n) \rightarrow t(n)^2 $ (les deux sont des polynomes) .\\
+  \textbf{Rappel :} Toute information peut être codée par une suite de bits ( par un mot binaire ) .\\
+  \textbf{Instance (abstraite) :} Un mot binaire x de taille $|x|=n$ \\
+  On cherche un mot binaire y tel que le prédicat B(x,y) soit vrai .\\
+  \subsection{La classe de complexité polynomiale P}
+  Il existe un algorithme de complexité polynomiale en n qui trouve y à partir de x .\\
+  \textbf{Remarque : }Il existe un polynôme $p(n)$ tel que $|y| \leq p(n) $ ou $n=|x|$ .
+  \subsection{La classe de complexité qui s'appelle NP}
+  (non déterministicaly polynomial) . Il existe un algo de complexité polynomiale $q(n)$ qui calcule le prédicat $B(x,y)$. On suppose toujours que $|y|\leq p(n)$.
+  \\
+  NP : vérification facile .\\
+  Est-ce que $P = NP$ ? Un des problème du millenaire .\\
+  Conjecture : $P\neq NP$
+  \subsection{Exemples }
+  %afaire
+  
+\end{document}

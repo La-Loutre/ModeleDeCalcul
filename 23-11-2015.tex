@@ -1,0 +1,75 @@
+\documentclass[base.tex]{subfiles}
+\begin{document}
+\subsection{Réductions}
+$A\leq B $ (le problème A se réduit au problème B).\\
+\\
+%schémaf1
+f et g : deux algorithmes . Une réduction est polynomial si la complexité de f et g est polynomiale .\\
+\textbf{Exemple trivial de réduction :}\\
+Réduction : Clique $\leq$ Sous-graphe .\\
+\\
+\textbf{Clique : } On cherche un sous-graphe complet ayant K sommets dans un graphe donné G .\\
+\\
+\textbf{Sous-graphe : }On cherche un sous-graphe d'un graphe G doné qui seraitisomorphe au graphe H donné .\\
+\\
+\textbf{Réduction : }prendre comme H le graphe complet à K sommets .\\
+\\
+\textbf{Clique : }cas particulier du problème sous-graphe .\\
+\\
+La direction de réduction : $A\leq B$\\
+\\
+Si on veut vraiment trouver une solution de A , on cherche un B convenable pour résoudre A grâce à B. Si on veut montere que le problème B soit difficile on cherche un problème A déjà connu comme étant difficile et en faisant la réduction $A\leq B$ on démontre que $B$ est effectivement difficile .\\
+Si le problème Clique n'a pas d'algorithme polynomial , alors le problème sous graphe n'en a pas non plus . \\
+Si h était de complexité polynomiale alors en appliquant f , puis h , puis g on obtiendrait un algo polynomial pour Clique .\\
+\\
+Nous avons vu une série de réductions : \\
+Problème de l'arrêt de MT $\leq$\\
+Problème restraint PCP $\leq$ Problème général PCP $\leq$ Ambiguité de langage algébrique .\\
+\\
+SAT $\leq$ 3-SAT $\leq$ Couverture par sommets $\leq$ Clique $\leq$ Sous-graphe .\\
+\\
+3-SAT : Il y a des variables logique $x_1,x_2,...,x_n$ \\
+(x ; = 1 vrai  , = 0 faux )\\
+et il y a une formule de la forme suivante : \\
+\[(t_{11} \vee t_{12}\vee t_{13})\wedge (t_{21} \vee t_{22}\vee t_{23}) \wedge ...\]
+Ou $t_j$ sont des littéraux , soit $x_k$ , soit non $x_k$ .\\
+On cherche les valeurs de variables $x_1,...,x_n$ qui rendent la formule vraie .\\
+\\
+\textbf{Couverture par sommets :}\\
+Instance : Un graphe G et un entier P.\\
+On cherche : Un ensemble de sommets de taille p tel que tout arête a au moins une extrémité dans cet ensemble.\\
+\\
+Une instance donnée de 3-SAT est satisfaisable si et seulement si le graphe construit possède une couverture par sommets de taille $p=n+2m$ ou n est le nombre des variables logiques et m est le nombre de clauses.\\
+\\
+\textbf{Définition : }Un problème C de la classe NP est NP complet si tout autre problème A de la classe NP se réduit polynomialement à C : $A\leq C$\\
+%Si $P\neq NP$ alors la classe NP se présente comme suit  +schéma feuille2
+Tous les problèmes NP-complets se réduisent l'un à l'autre .\\
+\\
+\textbf{Théorème : }Les problèmes suivants sont NP-complets .
+\begin{itemize}
+\item SAT
+\item 3-SAT
+\item Couverture par sommet
+\item Clique
+\item Sous-graphe .
+\item Circuit Hamiltonien
+\item 3-coloration de graphe
+  \end{itemize}
+Sont polynomiaux :
+\begin{itemize}
+\item 2-coloration (triviale)
+  \item 2-SAT (non triviale)
+\end{itemize}
+Il y a tout un tas de problèmes pour lesquels on a :
+\begin{itemize}
+\item Soit un algorithme polynomial
+  \item Soit une preuve de NP-complétude .
+\end{itemize}
+\textbf{Deux exceptions: } Isomorphisme de graphes et factorisation des entiers en facteurs premiers .\\
+\textbf{Conjecture : } ces 2 problèmes ne sont ni polynomiaux ni NP-complets .\\
+\\
+SAT $\leq$ 3-SAT $\leq$ Couverture par sommets $\leq$ Clique $\leq$ Sous-graphe .\\
+Chaque problèe est difficile parce que le précédent est difficile .\\
+\\
+\textbf{Théorème de Cook-Levin : } Le problème SAT est NP-complet . La preuve ne doit pas utiliser une réduction de SAT à un quelconque autre problème.\\
+\end{document}
